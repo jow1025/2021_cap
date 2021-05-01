@@ -1,0 +1,4 @@
+##Ignore File##
+
+fire_detect_opencv/detect_history/*.jpg
+fire_detect_opencv/detect_history/*.avi
