@@ -22,8 +22,8 @@ capture = cv.VideoCapture(-1)
 fourcc = cv.VideoWriter_fourcc(*'XVID')
 picture_directory="/home/pi/2021_cap/fire_detect_opencv/detect_history/pictures/"
 video_directory="/home/pi/2021_cap/fire_detect_opencv/detect_history/videos/"
-start_time=datetime.datetime.now()
-capture_time=start_time-datetime.timedelta(seconds=1)
+# start_time=datetime.datetime.now()
+capture_time=datetime.datetime.now()
 
 def observe():
     print('불꽃 감시 중..')
@@ -34,28 +34,27 @@ def observe():
         fire=fireCascade.detectMultiScale(frame,1.2,5)
         cv.imshow("LiveCam", frame)
         for(x,y,w,h) in fire:
-            print('불꽃 감지!!')
+            now = datetime.datetime.now()
+            print('불꽃 감지!! ('+now.strftime('%Y-%m-%d %H:%M:%S')+')')
             #탐지한 불꽃에 사각형으로 표시
             cv.rectangle(frame,(x,y),(x+w,y+h),(0,0,255),2)
             #cv.imshow("ObserveFrame", frame)
             fireStatus=True
-            now = datetime.datetime.now()
-            if capture_time+datetime.timedelta(seconds=1) <= now:
-                capture_time=savePhoto(now,frame)
-                filename=str(capture_time.strftime('%Y-%m-%d %H:%M:%S'))+'.jpg'
-                uploadPhoto(filename)
+            capture_time=savePhoto(now,frame)
+            filename=str(capture_time.strftime('%Y-%m-%d %H:%M:%S'))+'.jpg'
+            uploadPhoto(filename)
             break
         if fireStatus==True:
             break
 
 def savePhoto(now,frame):
-    cv.imshow('Fire',frame)
+    #cv.imshow('Fire',frame)
     cv.imwrite(picture_directory+str(now.strftime('%Y-%m-%d %H:%M:%S'))+".jpg",frame)
-    print('사진 저장 완료 : '+str(now.strftime('%Y-%m-%d %H:%M:%S')))
+    print('사진 저장 완료 ('+str(now.strftime('%Y-%m-%d %H:%M:%S'))+".jpg)")
     return now
 
-def saveVideo(filename):
-    print('불꽃 감지!! / 녹화 시작')
+def saveVideo():
+    print('녹화 시작')
     global fireStatus
     start_time = datetime.datetime.now()
     while(capture.isOpened()):
@@ -65,8 +64,8 @@ def saveVideo(filename):
         out.write(frame)
         if start_time + datetime.timedelta(seconds=5) <= now:
             fireStatus=False
-            print("영상 저장 완료 / 영상 업로드 시작")
-            uploadVideo(filename)
+            print('녹화 종료')
+            print('영상 저장 완료 ('+capture_time.strftime('%Y-%m-%d %H:%M:%S')+".avi)")
             break
         
 def uploadPhoto(file):
@@ -80,7 +79,7 @@ def uploadPhoto(file):
     blob.upload_from_filename(filename='/home/pi/2021_cap/fire_detect_opencv/detect_history/pictures/'+file)
     #debugging hello
     print("사진 업로드 완료")
-    print(blob.public_url)
+    #print(blob.public_url)
 
 def uploadVideo(file):
     blob = bucket.blob('detect_history/videos/'+file)
@@ -93,16 +92,17 @@ def uploadVideo(file):
     blob.upload_from_filename(filename='/home/pi/2021_cap/fire_detect_opencv/detect_history/videos/'+file)
     #debugging hello
     print("영상 업로드 완료")
-    print(blob.public_url)
+    #print(blob.public_url)
         
 while True:
     #print(fireStatus)
     if fireStatus==False:
         observe()
     else:
-        now = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-        out = cv.VideoWriter(video_directory+str(now)+'.avi',fourcc,20.0,(640,480))
-        saveVideo(str(now)+'.avi')
+        #now = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+        out = cv.VideoWriter(video_directory+capture_time.strftime('%Y-%m-%d %H:%M:%S')+'.avi',fourcc,20.0,(640,480))
+        saveVideo()
+        uploadVideo(capture_time.strftime('%Y-%m-%d %H:%M:%S')+'.avi')
 
 
 capture.release()
