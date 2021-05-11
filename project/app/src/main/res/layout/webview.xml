@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".CCTV">
+    tools:context=".CctvActivity">
 
     <WebView
         android:id="@+id/cctvWeb"
@@ -15,89 +16,137 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@android:color/white">
+        android:background="@drawable/border">
 
-        <LinearLayout
+
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_weight="1"
-            android:orientation="horizontal">
+            android:background="@drawable/border">
 
             <TextView
                 android:id="@+id/textView"
-                android:layout_width="wrap_content"
+                android:layout_width="100dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@android:color/white"
+                android:background="@drawable/border"
                 android:gravity="center"
                 android:text="CCTV 조정"
-                android:textColor="@android:color/black"
-                android:textSize="20sp" />
+                android:textSize="20dp"
 
-            <Button
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/cctvLeftButton"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <ImageButton
                 android:id="@+id/cctvLeftButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="10dp"
-                android:layout_weight="1"
-                android:background="#FFFFFF"
-                android:text="Left" />
+                android:layout_width="80dp"
+                android:layout_height="50dp"
+                android:background="@drawable/border"
+                android:src="@drawable/ic_left"
+                android:text="Button"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.401"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.715" />
 
-            <Button
-                android:id="@+id/cctvCenterButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="10dp"
-                android:layout_weight="1"
-                android:background="#FFFFFF"
-                android:text="Center" />
-
-            <Button
+            <ImageButton
                 android:id="@+id/cctvRightButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="10dp"
-                android:layout_weight="1"
-                android:background="#FFFFFF"
-                android:text="Right" />
-        </LinearLayout>
+                android:layout_width="80dp"
+                android:layout_height="50dp"
+                android:background="@drawable/border"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.885"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.715"
+                android:src="@drawable/ic_right" />
 
-        <LinearLayout
+            <ImageButton
+                android:id="@+id/cctvCenterButton"
+                android:layout_width="80dp"
+                android:layout_height="50dp"
+                android:background="@drawable/border"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.643"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.715"
+                android:src="@drawable/ic_down" />
+
+            <ImageButton
+                android:id="@+id/cctvUpButton"
+                android:layout_width="80dp"
+                android:layout_height="50dp"
+                android:background="@drawable/border"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.643"
+                app:layout_constraintStart_toStartOf="@+id/textView"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0"
+                android:src="@drawable/ic_up"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_weight="1"
-            android:orientation="horizontal">
+            android:background="@drawable/border">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="100dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="CCTV ON / OFF"
-                android:textSize="20sp"
+                android:background="@drawable/border"
                 android:gravity="center"
-                android:background="@android:color/white"
-                android:textColor="@android:color/black"/>
+                android:text="On/Off"
+
+                android:textSize="20dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/cctvOnButton"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
+
             <Button
                 android:id="@+id/cctvOnButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="10dp"
-                android:text="ON"
+                android:layout_weight="2"
                 android:background="#FFFFFF"
-                android:layout_weight="2"/>
+                android:text="ON"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
             <Button
                 android:id="@+id/cctvOffButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="10dp"
-                android:text="OFF"
+                android:layout_weight="2"
                 android:background="#FFFFFF"
-                android:layout_weight="2"/>
-        </LinearLayout>
+                android:text="OFF"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/cctvOnButton"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
         <Button
             android:id="@+id/callText"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_weight="1"
             android:background="@android:color/white"
             android:gravity="center"

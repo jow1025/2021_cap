@@ -21,7 +21,9 @@
         <activity android:name=".LoginActivity" />
         <activity android:name=".FindActivity"/>
         <activity android:name=".ProfileActivity"/>
-        <activity android:name=".CCTV"/>
+        <activity android:name=".CctvActivity"/>
+        <activity android:name=".StorageActivity"/>
+        <activity android:name=".ImageAdapter"/>
 
     </application>
 

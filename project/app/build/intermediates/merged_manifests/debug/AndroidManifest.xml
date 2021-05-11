@@ -34,7 +34,9 @@
         <activity android:name="com.example.project.LoginActivity" />
         <activity android:name="com.example.project.FindActivity" />
         <activity android:name="com.example.project.ProfileActivity" />
-        <activity android:name="com.example.project.CCTV" />
+        <activity android:name="com.example.project.CctvActivity" />
+        <activity android:name="com.example.project.StorageActivity" />
+        <activity android:name="com.example.project.ImageAdapter" />
         <activity
             android:name="com.google.firebase.auth.internal.GenericIdpActivity"
             android:excludeFromRecents="true"
@@ -107,6 +109,10 @@
                 android:value="com.google.firebase.components.ComponentRegistrar" />
         </service>
 
+        <provider
+            android:name="com.squareup.picasso.PicassoProvider"
+            android:authorities="com.example.project.com.squareup.picasso"
+            android:exported="false" />
         <provider
             android:name="com.google.firebase.provider.FirebaseInitProvider"
             android:authorities="com.example.project.firebaseinitprovider"

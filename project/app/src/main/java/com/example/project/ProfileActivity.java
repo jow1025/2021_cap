@@ -4,7 +4,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,9 +25,10 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
 
     //view objects
     private TextView textViewUserEmail;
-    private Button buttonLogout;
-    private TextView textivewDelete;
-    private Button event_stream;
+    private ImageButton buttonLogout;
+    private TextView textviewDelete;
+    private ImageButton event_stream;
+    private ImageButton storage_button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,11 +36,12 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         setContentView(R.layout.activity_profile);
 
         //initializing views
-        textViewUserEmail = (TextView) findViewById(R.id.textviewUserEmail);
-        buttonLogout = (Button) findViewById(R.id.buttonLogout);
-        textivewDelete = (TextView) findViewById(R.id.textviewDelete);
-        event_stream=(Button)findViewById(R.id.event_stream);
-       // evnet_storage=(Button)findViewById(R.id.event_storage);
+       // textViewUserEmail = (TextView) findViewById(R.id.textviewUserEmail);
+        buttonLogout = (ImageButton) findViewById(R.id.buttonLogout);
+        textviewDelete = (TextView) findViewById(R.id.textviewDelete);
+        event_stream=(ImageButton) findViewById(R.id.event_stream);
+        storage_button=(ImageButton) findViewById(R.id.storage_button);
+        // evnet_storage=(Button)findViewById(R.id.event_storage);
         //initializing firebase authentication object
         firebaseAuth = FirebaseAuth.getInstance();
         //유저가 로그인 하지 않은 상태라면 null 상태이고 이 액티비티를 종료하고 로그인 액티비티를 연다.
@@ -52,13 +54,13 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         FirebaseUser user = firebaseAuth.getCurrentUser();
 
         //textViewUserEmail의 내용을 변경해 준다.
-        textViewUserEmail.setText("반갑습니다.\n"+ user.getEmail()+"으로 로그인 하였습니다.");
+        //textViewUserEmail.setText("반갑습니다.\n"+ user.getEmail()+"으로 로그인 하였습니다.");
 
         //logout button event
         buttonLogout.setOnClickListener(this);
-        textivewDelete.setOnClickListener(this);
+        textviewDelete.setOnClickListener(this);
         event_stream.setOnClickListener(this);
-
+        storage_button.setOnClickListener(this);
     }
 
     @Override
@@ -69,7 +71,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
             startActivity(new Intent(this, LoginActivity.class));
         }
         //회원탈퇴를 클릭하면 회원정보를 삭제한다. 삭제전에 컨펌창을 하나 띄워야 겠다.
-        if(view == textivewDelete) {
+        if(view == textviewDelete) {
             AlertDialog.Builder alert_confirm = new AlertDialog.Builder(ProfileActivity.this);
             alert_confirm.setMessage("정말 계정을 삭제 할까요?").setCancelable(false).setPositiveButton("확인", new DialogInterface.OnClickListener() {
                         @Override
@@ -96,10 +98,13 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
             alert_confirm.show();
         }
         if(view==event_stream) {
-                //TODO
-                startActivity(new Intent(this, CCTV.class)); //추가해 줄  액티비티
-
-            }
+            //TODO
+            startActivity(new Intent(this, CctvActivity.class)); //추가해 줄  액티비티
 
         }
+        if(view==storage_button){
+            finish();
+            startActivity(new Intent(this, StorageActivity.class));
+        }
     }
+}
