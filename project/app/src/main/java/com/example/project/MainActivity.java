@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Toast.makeText(this, "password를 입력해 주세요.", Toast.LENGTH_SHORT).show();
             return;
         }
-
+    
         progressDialog.setMessage("로그인중입니다. 잠시 기다려 주세요...");
         progressDialog.show();
 
