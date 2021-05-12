@@ -4,6 +4,7 @@ from firebase_admin import credentials
 from firebase_admin import storage
 import cv2 as cv
 from uuid import uuid4
+from fire_detect_opencv import fcm
 
 PROJECT_ID = "cap-aacc4"
 cred = credentials.Certificate(
@@ -33,7 +34,9 @@ def observe():
         cv.imshow("LiveCam", frame)
         for (x, y, w, h) in fire:
             now = datetime.datetime.now()
-            print('불꽃 감지!! (' + now.strftime('%Y-%m-%d %H:%M:%S') + ')')
+            str_now=str(now).strftime('%Y-%m-%d %H:%M:%S')
+            print('불꽃 감지!! (' + str_now + ')')
+            fcm.sendMessage(str_now)
             # 탐지한 불꽃에 사각형으로 표시
             cv.rectangle(frame, (x, y), (x + w, y + h), (0, 0, 255), 2)
             fireStatus = True
