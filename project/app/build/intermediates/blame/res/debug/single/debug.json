@@ -276,12 +276,12 @@
         "source": "C:\\Users\\admin\\Desktop\\project\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_right.png"
     },
     {
-        "merged": "C:\\Users\\admin\\Desktop\\project\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_ic_water.png.flat",
-        "source": "C:\\Users\\admin\\Desktop\\project\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_water.png"
-    },
-    {
         "merged": "C:\\Users\\admin\\Desktop\\project\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_blue_sky.jpg.flat",
         "source": "C:\\Users\\admin\\Desktop\\project\\app\\src\\main\\res\\drawable-mdpi\\blue_sky.jpg"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\project\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_ic_water.png.flat",
+        "source": "C:\\Users\\admin\\Desktop\\project\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_water.png"
     },
     {
         "merged": "C:\\Users\\admin\\Desktop\\project\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_logout.png.flat",
@@ -306,6 +306,10 @@
     {
         "merged": "C:\\Users\\admin\\Desktop\\project\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_down.png.flat",
         "source": "C:\\Users\\admin\\Desktop\\project\\app\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\ic_down.png"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\project\\app\\build\\intermediates\\res\\merged\\debug\\layout_notification.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\project\\app\\src\\main\\res\\layout\\notification.xml"
     },
     {
         "merged": "C:\\Users\\admin\\Desktop\\project\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_down.png.flat",
@@ -352,12 +356,12 @@
         "source": "C:\\Users\\admin\\Desktop\\project\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_storage.xml"
     },
     {
-        "merged": "C:\\Users\\admin\\Desktop\\project\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_ic_device.png.flat",
-        "source": "C:\\Users\\admin\\Desktop\\project\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_device.png"
-    },
-    {
         "merged": "C:\\Users\\admin\\Desktop\\project\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_storage.xml.flat",
         "source": "C:\\Users\\admin\\Desktop\\project\\app\\src\\main\\res\\layout\\activity_storage.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\project\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_ic_device.png.flat",
+        "source": "C:\\Users\\admin\\Desktop\\project\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_device.png"
     },
     {
         "merged": "C:\\Users\\admin\\Desktop\\project\\app\\build\\intermediates\\res\\merged\\debug\\drawable_linear.png.flat",
