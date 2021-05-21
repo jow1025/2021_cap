@@ -7,23 +7,23 @@ from uuid import uuid4
 from pyfcm import FCMNotification
 
 APIKEY="AAAAalMeKts:APA91bEiB12GcGeo5W0MmzOjjmcDiR9LwrVgUxmspbWpI4eZz0LjuFIuTVxnfCbqd_IoeMjVkqJt5BGe9V77gvzFLmfSj5utQtj_0C0B0Y3LYM9nFytYpgDA_RV4HouwU-Qp7t8RwWMd"
-TOKEN="eIDty5mEQveNdIeVUUisu3:APA91bHgCKec2OnflVTgS7a5bCacJZjX18js8BvNoCfYR0_3N6nPAp6KWCrfL-PzG3AjTfCBDqYnzr0oB_fV62fjcFFrw5OTJFkt6t04NKhzEWjGuYHoooGDlBG6JF8uq2avny8sLByL"
+TOKEN="duvGHQ5mTlKfmHIGsRs_Ln:APA91bFdaDRmiMO0wSH7pUQISWQ-m1CcKpwiB6h0QCAE8YuEaTJED3BhdEpNJ5qrdh9aWpgvaR1T2a9HyHYBBp3WCVknYeG8dxfrYhu-m-IXWH2G-vYev7y_hE5X-pPGNR-H_mTpPkWG"
 
 push_service = FCMNotification(api_key=APIKEY)
 PROJECT_ID = "project-8965d"
 cred = credentials.Certificate(
-    "/home/pi/Downloads/project-8965d-firebase-adminsdk-bkl6z-29507732d7.json")
+    "./cert_key/project-8965d-firebase-adminsdk-bkl6z-29507732d7.json")
 default_app = firebase_admin.initialize_app(cred, {'storageBucket': f"{PROJECT_ID}.appspot.com"})
 # 버킷은 바이너리 객체의 상위 컨테이너. 버킷은 Storage에서 데이터를 보관하는 기본 컨테이너.
 bucket = storage.bucket()  # 기본 버킷 사용
 fireStatus = False
-fireCascade = cv.CascadeClassifier('/home/pi/fire.xml')
+fireCascade = cv.CascadeClassifier('./cascade_classifier/fire.xml')
 # 카메라 정보 받아오기 pi카메라는 -1
 capture = cv.VideoCapture(-1)
 # 비디오 코덱설정
 fourcc = cv.VideoWriter_fourcc(*'XVID')
-picture_directory = "/home/pi/image_store/"
-video_directory = "/home/pi/video_store/"
+picture_directory = "./detect_history/pictures/"
+video_directory = "./detect_history/videos/"
 
 capture_time = datetime.datetime.now()
 
