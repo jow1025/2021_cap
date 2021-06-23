@@ -19,6 +19,6 @@ def sendMessage(now):  # 메시지 (data 타입)
     # 토큰값을 이용해 1명에게 푸시알림을 전송함
     result = push_service.single_device_data_message(registration_id=TOKEN, data_message=data_message)
 
-#sendMessage(str(datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')))
+sendMessage(str(datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')))
 
 

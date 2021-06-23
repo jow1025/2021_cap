@@ -1,4 +1,4 @@
-#Wed May 12 18:29:56 KST 2021
-base.0=C\:\\Users\\admin\\Desktop\\project\\app\\build\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
-path.0=classes.dex
+#Fri May 21 09:49:41 KST 2021
+base.0=C\:\\Users\\BSH\\Dropbox\\code\\git\\2021_cap\\project\\app\\build\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
 renamed.0=classes.dex
+path.0=classes.dex
