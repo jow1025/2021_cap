@@ -1,22 +1,37 @@
-from gpiozero import Servo
-from gpiozero.tools import sin_values
 from time import sleep
+import pigpio
 
-servoX = Servo(15)
-servoY = Servo(18)
+servoX=pigpio.pi()
+servoY=pigpio.pi()
+x=15
+y=18
 
 def move_up():
-    servoY.value+=0.3
+    valY=servoY.get_servo_pulsewidth(y)
+    if valY+300<=2400:
+        valY+=300
+        servoY.set_servo_pulsewidth(y,valY)
 
 def move_down():
-    servoY.value-=0.3
+    valY=servoY.get_servo_pulsewidth(y)
+    if valY-300>=600:
+        valY-=300
+        servoY.set_servo_pulsewidth(y,valY)
     
 def move_left():
-    servoX.value+=0.3
+    valX=servoX.get_servo_pulsewidth(x)
+    if valX+300<=2400:
+        valX+=300
+        servoX.set_servo_pulsewidth(x,valX)
     
 def move_right():
-    servoX.value-=0.3
+    valX=servoX.get_servo_pulsewidth(x)
+    if valX-300>=600:
+        valX-=300
+        servoX.set_servo_pulsewidth(x,valX)
     
 def servoReset():
-    servoX.value=0
-    servoY.value=0
+    servoX.set_servo_pulsewidth(x,1500)
+    servoY.set_servo_pulsewidth(y,1500)
+
+    
