@@ -1,36 +1,22 @@
-import RPi.GPIO as GPIO  
+from gpiozero import Servo
+from gpiozero.tools import sin_values
 from time import sleep
 
+servoX = Servo(15)
+servoY = Servo(18)
 
+def move_up():
+    servoY.value+=0.3
 
-GPIO.setmode(GPIO.BOARD) 
-
-GPIO.setup(12, GPIO.OUT) 
-
-p = GPIO.PWM(12, 50)   
-
-p.start(0)            
-
-p.ChangeDutyCycle(3) 
-sleep(1)
-
-p.ChangeDutyCycle(12)
-sleep(1) 
-
-p.ChangeDutyCycle(7.5)
-sleep(1)
-
-
-
-while(1):
-
-  val = float(raw_input("input(3~7.5~12) = "))
-  
-  if val == -1: break
-
-  p.ChangeDutyCycle(val)
-  
-
-p.stop()                
-
-GPIO.cleanup() 
+def move_down():
+    servoY.value-=0.3
+    
+def move_left():
+    servoX.value-=0.3
+    
+def move_right():
+    servoX.value+=0.3
+    
+def servoReset():
+    servoX.value=0
+    servoY.value=0
