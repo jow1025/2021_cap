@@ -5,6 +5,7 @@ from firebase_admin import storage
 import cv2 as cv
 from uuid import uuid4
 import fcm
+import time
 
 PROJECT_ID = "cap-aacc4"
 cred = credentials.Certificate(
@@ -42,6 +43,7 @@ def observe():
             capture_time = savePhoto(now, frame)
             filename = str(capture_time.strftime('%Y-%m-%d %H:%M:%S')) + '.jpg'
             uploadPhoto(filename)
+            fireStatus=True;
             break
 
 
@@ -63,8 +65,11 @@ def uploadPhoto(file):
 
 
 while True:
-    observe()
-        
+    if fireStatus==False:
+        observe()
+    else:
+        time.sleep(10)
+        fireStatus==True:
 
 capture.release()
 out.release()
