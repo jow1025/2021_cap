@@ -12,10 +12,10 @@ def move_down():
     servoY.value-=0.3
     
 def move_left():
-    servoX.value-=0.3
+    servoX.value+=0.3
     
 def move_right():
-    servoX.value+=0.3
+    servoX.value-=0.3
     
 def servoReset():
     servoX.value=0
