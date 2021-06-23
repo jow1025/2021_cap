@@ -4,7 +4,7 @@ from firebase_admin import credentials
 from firebase_admin import storage
 import cv2 as cv
 from uuid import uuid4
-import fcm
+import push_message as fcm
 import time
 
 PROJECT_ID = "cap-aacc4"
@@ -69,7 +69,7 @@ while True:
         observe()
     else:
         time.sleep(10)
-        fireStatus==True:
+        fireStatus=False;
 
 capture.release()
 out.release()
