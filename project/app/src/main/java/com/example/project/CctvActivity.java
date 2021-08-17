@@ -24,8 +24,12 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.github.mikephil.charting.charts.LineChart;
+/////////////////////
+import com.github.mikephil.charting.charts.PieChart;
+////////////////////
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.YAxis;
+import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
@@ -36,7 +40,13 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.github.mikephil.charting.charts.PieChart;
 
+/////////////////////////
+import com.github.mikephil.charting.charts.PieChart;
+import com.github.mikephil.charting.data.PieData;
+import com.github.mikephil.charting.data.PieDataSet;
+//////////////////////////
 import org.w3c.dom.Text;
 
 import java.io.IOException;
@@ -76,6 +86,8 @@ public class CctvActivity extends AppCompatActivity{
     private TextView f_dust,f_temp,f_humid,f_gas;                           //파이어베이스 set 초기값
 
 
+    //////////
+    private PieChart pie_chart;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -111,6 +123,9 @@ public class CctvActivity extends AppCompatActivity{
         f_gas=(TextView)findViewById(R.id.tv_fgas);
        // f_humid=(TextView)findViewById(R.id.tv_fhumid);
        /// f_temp=(TextView)findViewById(R.id.tv_ftemp);
+
+        ///////////
+        pie_chart=(PieChart)findViewById(R.id.pi_chart);
 
         carUpButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -400,6 +415,13 @@ public class CctvActivity extends AppCompatActivity{
         Gas_chart.setData(data3);
         DrawingGraph_gas();
 
+
+        //////////////////
+
+
+
+
+
     }
     //oncreateFinishLine///////////////////////////////////////////////////////////////////////////////////
 
@@ -461,6 +483,10 @@ public class CctvActivity extends AppCompatActivity{
                     Gas_chart.notifyDataSetChanged();
                     Gas_chart.setVisibleXRangeMaximum(500);
                     Gas_chart.moveViewToX(data_gas.getDataSetCount());
+
+
+                    /////////////
+
                 }
 
                 @Override
@@ -485,6 +511,7 @@ public class CctvActivity extends AppCompatActivity{
             mgas_ref.addChildEventListener(mChild);
         }
     }
+
 
 
     private LineDataSet createGasSet(){
